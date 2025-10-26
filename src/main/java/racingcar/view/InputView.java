@@ -14,7 +14,7 @@ public class InputView {
     }
 
     private void validateAttempts(String attempts) {
-        if (attempts.trim().isEmpty() || !attempts.matches("[1-9]*")) {
+        if (attempts.trim().isEmpty() || !attempts.matches("^[1-9][0-9]*$")) {
             throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
         }
     }
