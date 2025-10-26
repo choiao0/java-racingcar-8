@@ -16,7 +16,8 @@ public class RacingGameController {
     public void run() {
         outputView.printCarNamesInputGuide();
         String carNames = inputView.getCarNames();
+
         outputView.printAttemptsInputGuide();
-        String attempts = inputView.getAttempts();
+        int attempts = inputView.getAttempts();
     }
 }
