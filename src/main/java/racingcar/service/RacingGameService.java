@@ -7,11 +7,15 @@ import racingcar.domain.Cars;
 
 public class RacingGameService {
     public Cars createCars(String carNames) {
-        return new Cars(
-                Arrays.stream(carNames.split(","))
-                        .map(Car::new)
-                        .toList()
+        String[] splitName = splitName(carNames);
+        return new Cars(Arrays.stream(splitName)
+                .map(Car::new)
+                .toList()
         );
+    }
+
+    private String[] splitName(String carNames) {
+        return carNames.split(",");
     }
 
     public void playRound(Cars cars) {
