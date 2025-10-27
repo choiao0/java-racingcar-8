@@ -3,7 +3,7 @@ package racingcar.domain;
 public class Car {
 
     private final String name;
-    private final int position;
+    private int position;
 
     public Car(String name) {
         validateName(name);
@@ -17,7 +17,15 @@ public class Car {
         }
     }
 
+    public void move() {
+        position += 1;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

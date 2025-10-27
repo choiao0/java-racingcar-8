@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.domain.Car;
@@ -24,6 +25,17 @@ public class RacingGameController {
 
         outputView.printAttemptsInputGuide();
         int attempts = inputView.getAttempts();
+
+        for (int i = 0; i < attempts; i++) {
+            outputView.printResultMessage();
+            for (Car car : cars.getCars()) {
+                int randomNumber = Randoms.pickNumberInRange(0, 9);
+                if (randomNumber > 3) {
+                    car.move();
+                }
+                outputView.printCarPosition(car);
+            }
+        }
     }
 
     private List<Car> createCars(String names) {
