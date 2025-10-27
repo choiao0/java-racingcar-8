@@ -9,16 +9,20 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        validateDuplicate(cars);
+        validateCarNamesUnique(cars);
         this.cars = new ArrayList<>(cars);
     }
 
-    private void validateDuplicate(List<Car> cars) {
-        Set<String> names = new HashSet<>();
+    private void validateCarNamesUnique(List<Car> cars) {
+        Set<String> nameSet = new HashSet<>();
         for (Car car : cars) {
-            if (!names.add(car.getName())) {
-                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-            }
+            checkUniqueName(nameSet, car.getName());
+        }
+    }
+
+    private void checkUniqueName(Set<String> nameSet, String name) {
+        if (!nameSet.add(name)) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
     }
 
