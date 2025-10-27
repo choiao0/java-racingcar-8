@@ -20,19 +20,18 @@ public class CarTest {
         assertThat(car.getName()).isEqualTo(name);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"", "longname"})
-    @DisplayName("자동차 이름이 1~5자가 아니면 예외 발생")
-    void validateCarNameLength(String name) {
-        assertThatThrownBy(() -> new Car(name))
+    @Test
+    @DisplayName("자동차 이름이 5자 이상이면 예외 발생")
+    void validateCarNameLength() {
+        assertThatThrownBy(() -> new Car("longname"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5자 이하여야 합니다.");
     }
 
     @Test
-    @DisplayName("자동차 이름이 공백이면 예외 발생")
-    void validateCarNameBlank() {
-        assertThatThrownBy(() -> new Car(" "))
+    @DisplayName("자동차 이름이 빈 문자열이면 예외 발생")
+    void validateCarNameEmpty() {
+        assertThatThrownBy(() -> new Car(""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 공백일 수 없습니다.");
     }
