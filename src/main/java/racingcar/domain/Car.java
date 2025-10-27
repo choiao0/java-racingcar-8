@@ -17,8 +17,10 @@ public class Car {
         }
     }
 
-    public void move() {
-        position += 1;
+    public void moveIfPossible(int randomNumber) {
+        if (randomNumber > 3) {
+            position++;
+        }
     }
 
     public String getName() {

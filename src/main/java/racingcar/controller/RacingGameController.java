@@ -24,17 +24,10 @@ public class RacingGameController {
         Cars cars = new Cars(createCars(carNames));
 
         outputView.printAttemptsInputGuide();
-        int attempts = inputView.getAttempts();
+        int totalRounds = inputView.getAttempts();
 
-        for (int i = 0; i < attempts; i++) {
-            outputView.printResultMessage();
-            for (Car car : cars.getCars()) {
-                int randomNumber = Randoms.pickNumberInRange(0, 9);
-                if (randomNumber > 3) {
-                    car.move();
-                }
-                outputView.printCarPosition(car);
-            }
+        for (int round = 0; round < totalRounds; round++) {
+            playRound(cars);
         }
 
         Cars winners = cars.findWinners();
@@ -45,5 +38,18 @@ public class RacingGameController {
         return Arrays.stream(names.split(","))
                 .map(Car::new)
                 .toList();
+    }
+
+    private void playRound(Cars cars) {
+        outputView.printRoundHeader();
+        for (Car car : cars.getCars()) {
+            int randomNumber = pickRandomNumber();
+            car.moveIfPossible(randomNumber);
+            outputView.printRoundStatus(car);
+        }
+    }
+
+    private int pickRandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 }

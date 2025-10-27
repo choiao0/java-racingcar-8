@@ -13,11 +13,11 @@ public class OutputView {
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public void printResultMessage() {
+    public void printRoundHeader() {
         System.out.println("\n실행 결과");
     }
 
-    public void printCarPosition(Car car) {
+    public void printRoundStatus(Car car) {
         String carPosition = car.getName() + " : " + "-".repeat(car.getPosition());
         System.out.println(carPosition);
     }
