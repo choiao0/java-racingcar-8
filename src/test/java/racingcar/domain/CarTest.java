@@ -9,6 +9,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarTest {
+    private static final int MOVING_FORWARD = 4;
+    private static final int STOP = 3;
+
     @ParameterizedTest
     @ValueSource(strings = {"pobi", "woni", "jun"})
     @DisplayName("유효한 이름으로 자동차 생성")
@@ -32,5 +35,23 @@ public class CarTest {
         assertThatThrownBy(() -> new Car(" "))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 1자 이상, 5자 이하여야 합니다.");
+    }
+
+    @Test
+    @DisplayName("랜덤 숫자가 4 이상이면 전진")
+    void checkMovingForward() {
+        Car car = new Car("pobi");
+        car.moveIfPossible(MOVING_FORWARD);
+
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("랜덤 숫자가 4 미만이면 정지")
+    void checkStop() {
+        Car car = new Car("pobi");
+        car.moveIfPossible(STOP);
+
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }
