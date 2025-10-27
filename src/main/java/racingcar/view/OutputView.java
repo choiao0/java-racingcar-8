@@ -1,6 +1,8 @@
 package racingcar.view;
 
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 public class OutputView {
     public void printCarNamesInputGuide() {
@@ -18,5 +20,12 @@ public class OutputView {
     public void printCarPosition(Car car) {
         String carPosition = car.getName() + " : " + "-".repeat(car.getPosition());
         System.out.println(carPosition);
+    }
+
+    public void printWinners(Cars cars) {
+        String message = cars.getCars().stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", ", "\n최종 우승자 : ", ""));
+        System.out.println(message);
     }
 }
