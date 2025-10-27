@@ -20,9 +20,13 @@ public class RacingGameService {
 
     public void playRound(Cars cars) {
         for (Car car : cars.getCars()) {
-            int randomNumber = pickRandomNumber();
-            car.moveIfPossible(randomNumber);
+            attemptMove(car);
         }
+    }
+
+    private void attemptMove(Car car) {
+        int randomNumber = pickRandomNumber();
+        car.moveIfPossible(randomNumber);
     }
 
     private int pickRandomNumber() {
