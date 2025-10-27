@@ -17,9 +17,15 @@ public class OutputView {
         System.out.println("\n실행 결과");
     }
 
-    public void printRoundStatus(Car car) {
-        String carPosition = car.getName() + " : " + "-".repeat(car.getPosition());
-        System.out.println(carPosition);
+    public void printRoundStatus(Cars cars) {
+        StringBuilder roundStatus = new StringBuilder();
+        for (Car car : cars.getCars()) {
+            roundStatus.append(car.getName())
+                    .append(" : ")
+                    .append("-".repeat(car.getPosition()))
+                    .append("\n");
+        }
+        System.out.print(roundStatus);
     }
 
     public void printWinners(Cars cars) {

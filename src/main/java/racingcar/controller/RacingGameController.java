@@ -45,8 +45,8 @@ public class RacingGameController {
         for (Car car : cars.getCars()) {
             int randomNumber = pickRandomNumber();
             car.moveIfPossible(randomNumber);
-            outputView.printRoundStatus(car);
         }
+        outputView.printRoundStatus(cars);
     }
 
     private int pickRandomNumber() {
