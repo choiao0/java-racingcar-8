@@ -36,6 +36,8 @@ public class RacingGameController {
                 outputView.printCarPosition(car);
             }
         }
+
+        Cars winners = cars.findWinners();
     }
 
     private List<Car> createCars(String names) {
