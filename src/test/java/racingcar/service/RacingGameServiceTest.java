@@ -1,9 +1,12 @@
 package racingcar.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
@@ -21,6 +24,15 @@ public class RacingGameServiceTest {
         assertThat(cars.getCars())
                 .extracting(Car::getName)
                 .containsExactly("pobi", "woni", "jun");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {",,", "a,"})
+    @DisplayName("자동차 이름이 빈 문자열이면 예외 발생")
+    void carNameEmptyTest(String names) {
+        assertThatThrownBy(() -> service.createCars(names))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("자동차 이름은 공백일 수 없습니다.");
     }
 
     @Test

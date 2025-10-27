@@ -15,7 +15,7 @@ public class RacingGameService {
     }
 
     private String[] splitName(String carNames) {
-        return carNames.split(",");
+        return carNames.split(",", -1);
     }
 
     public void playRound(Cars cars) {
