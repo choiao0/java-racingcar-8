@@ -26,7 +26,7 @@ public class CarTest {
     void validateCarNameLength(String name) {
         assertThatThrownBy(() -> new Car(name))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 1자 이상, 5자 이하여야 합니다.");
+                .hasMessage("자동차 이름은 5자 이하여야 합니다.");
     }
 
     @Test
