@@ -24,3 +24,30 @@
 - [ ]  시도 횟수가 양수가 아닌 경우
     - [ ]  자동차 이름이 빈 문자열이나 공백인 경우
     - [ ]  자동차 이름이 0이나 음수인 경우
+
+### 📦 패키지 구조
+
+```
+src
+├── main
+│   └── java
+│       └── racingcar
+│           ├── controller
+│           │   └── RacingGameController.java
+│           ├── domain
+│           │   ├── Car.java
+│           │   └── Cars.java
+│           ├── service
+│           │   └── RacingGameService.java
+│           └── view
+│               └── Application.java
+└── test
+    └── java
+        └── racingcar
+            ├── domain
+            │   ├── CarTest.java
+            │   └── CarsTest.java
+            ├── service
+            │   └── RacingGameServiceTest.java
+            └── ApplicationTest.java
+```
