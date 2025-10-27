@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 public class Car {
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int MOVE_NUMBER = 4;
 
     private final String name;
     private int position;
@@ -12,13 +14,13 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name.trim().isEmpty() || name.length() > 5) {
+        if (name.trim().isEmpty() || name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 1자 이상, 5자 이하여야 합니다.");
         }
     }
 
     public void moveIfPossible(int randomNumber) {
-        if (randomNumber > 3) {
+        if (randomNumber >= MOVE_NUMBER) {
             position++;
         }
     }
